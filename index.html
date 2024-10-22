@@ -12,34 +12,194 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Style adjustments for cursor and page layout -->
+    <!-- CSS for layout, custom cursor, and fixing formatting -->
     <style>
         body {
             cursor: none; /* Hide the default cursor */
-        }
-        .custom-cursor {
-            position: absolute;
-            width: 50px; /* Adjust size as needed */
-            height: 50px;
-            pointer-events: none; /* Prevent the custom cursor from blocking interaction */
-            z-index: 9999; /* Ensure the custom cursor is above other elements */
-        }
-        /* Ensure that no extra margins or padding cause layout issues */
-        body, html {
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
         }
-        /* Ensure that the page content and layout are not affected */
         header {
             background-color: #4a90e2;
             color: white;
             padding: 40px 0;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: 600;
+        }
+        header p {
+            margin-top: 10px;
+            font-size: 1.3em;
+            font-weight: 400;
+        }
+
+        /* Style for tabs */
+        .tab {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .tab button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 14px 20px;
+            cursor: pointer;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 2px;
+            transition: background-color 0.3s ease;
+        }
+        .tab button:hover {
+            background-color: #357ABD;
+        }
+        .tab button.active {
+            background-color: #357ABD;
+        }
+
+        /* Content container */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-top: 2px solid #4a90e2;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 0 0 10px 10px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Style for articles */
+        .article-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .article-container img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .article-container a {
+            font-size: 1.2em;
+            color: #4a90e2;
+            text-decoration: none;
+        }
+        .article-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Fix for prototype carousel and other content */
+        .features-list {
+            margin-bottom: 30px;
+        }
+        .features-list h3 {
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+        .features-list p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+        .carousel-slide {
+            display: none;
+            text-align: center;
+        }
+        .carousel-slide img {
+            width: 400px;
+            height: 850px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.6s ease;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+        }
+        .next {
+            right: 15px;
+        }
+        .prev {
+            left: 15px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .survey-button {
+            display: inline-block;
+            background-color: #4a90e2;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .survey-button:hover {
+            background-color: #357ABD;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #4a90e2;
+            text-decoration: underline;
+        }
+
+        /* Custom cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            pointer-events: none; /* Make sure the cursor doesn’t block clicks */
+            z-index: 9999; /* Ensure the custom cursor is above other elements */
+            transform: translate(-50%, -50%); /* Center the cursor */
         }
     </style>
 
-    <!-- Add canvas-confetti library from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
@@ -154,8 +314,8 @@
 
     document.addEventListener('mousemove', (e) => {
         // Offset the cursor to ensure it aligns well with the actual pointer
-        cursor.style.left = (e.pageX - 25) + 'px'; // Adjust based on cursor size
-        cursor.style.top = (e.pageY - 25) + 'px';  // Adjust based on cursor size
+        cursor.style.left = e.pageX + 'px'; // Adjust based on cursor size
+        cursor.style.top = e.pageY + 'px';  // Adjust based on cursor size
     });
 
     let slideIndex = 1;
