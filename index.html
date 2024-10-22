@@ -35,50 +35,65 @@
             font-weight: 400;
         }
 
-        /* Section Styles */
-        section {
-            max-width: 1200px;
-            margin: 50px auto;
-            text-align: center;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        section h2 {
-            font-size: 2.5em;
-            color: #4a90e2;
-            margin-bottom: 20px;
-        }
-        section p {
-            font-size: 1.2em;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        /* Image Styling */
-        .money-image {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Tab styles */
+        .tab {
+            display: flex;
+            justify-content: center;
             margin-top: 20px;
         }
-
-        /* Buttons */
-        .cta-button {
+        .tab button {
             background-color: #4a90e2;
             color: white;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border: none;
+            padding: 14px 20px;
             cursor: pointer;
-            text-decoration: none;
-            border-radius: 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 2px;
             transition: background-color 0.3s ease;
         }
-        .cta-button:hover {
+        .tab button:hover {
             background-color: #357ABD;
+        }
+        .tab button.active {
+            background-color: #357ABD;
+        }
+
+        /* Content container */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-top: 2px solid #4a90e2;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 0 0 10px 10px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Article Styles */
+        .article-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .article-container img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .article-container a {
+            font-size: 1.2em;
+            color: #4a90e2;
+            text-decoration: none;
+        }
+        .article-container a:hover {
+            text-decoration: underline;
         }
 
         /* Footer */
@@ -108,23 +123,73 @@
     <p>Let's Grow Your Wealth by Tenfold</p>
 </header>
 
-<section>
-    <h2>About Us</h2>
-    <p>At Tenfold, we believe in empowering individuals to achieve financial independence through smart investments. With cutting-edge technology, strategic partnerships, and personalized guidance, we're here to help you grow your wealth by tenfold.</p>
-    <a href="#" class="cta-button">Get Started</a>
-    <!-- Add Image Below the Content -->
-    <img src="money.jpg" alt="Money image" class="money-image">
-</section>
+<!-- Tab buttons -->
+<div class="tab">
+    <button class="tablinks active" onclick="openTab(event, 'form-survey')">Form Survey</button>
+    <button class="tablinks" onclick="openTab(event, 'articles')">Articles</button>
+    <button class="tablinks" onclick="openTab(event, 'prototype')">Prototype Picture</button>
+</div>
 
-<section>
-    <h2>Our Mission</h2>
-    <p>We are dedicated to revolutionizing the investment landscape, making it easier for everyone to access financial opportunities and maximize their potential returns. Join us and start your journey towards financial growth today.</p>
-    <a href="#" class="cta-button">Learn More</a>
-</section>
+<!-- Tab content -->
+<div id="form-survey" class="tab-content active">
+    <h2>Form Survey</h2>
+    <p>Here will be the form survey for collecting feedback or user input.</p>
+</div>
+
+<div id="articles" class="tab-content">
+    <h2>Articles</h2>
+
+    <!-- Article 1 -->
+    <div class="article-container">
+        <img src="picture-1.jpg" alt="Article 1 Image">
+        <a href="article1.html" target="_blank">Article 1: Lessons from Investment to Life</a>
+    </div>
+
+    <!-- Article 2 -->
+    <div class="article-container">
+        <img src="picture-2.jpg" alt="Article 2 Image">
+        <a href="article2.html" target="_blank">Article 2: How Investment Fuels Personal Development</a>
+    </div>
+
+    <!-- Article 3 -->
+    <div class="article-container">
+        <img src="picture-3.jpg" alt="Article 3 Image">
+        <a href="article3.html" target="_blank">Article 3: Thriving in the Changing Landscape of Investment</a>
+    </div>
+
+    <!-- Article 4 -->
+    <div class="article-container">
+        <img src="picture-4.jpg" alt="Article 4 Image">
+        <a href="article4.html" target="_blank">Article 4: How Investment Mirrors Life Philosophy</a>
+    </div>
+</div>
+
+<div id="prototype" class="tab-content">
+    <h2>Prototype Picture</h2>
+    <p>This is where the prototype pictures will be shown.</p>
+</div>
 
 <footer>
     <p>© 2024 Tenfold. All rights reserved. | <a href="#">Privacy Policy</a></p>
 </footer>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+</script>
 
 </body>
 </html>
