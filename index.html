@@ -122,8 +122,8 @@
             text-align: center;
         }
         .carousel-slide img {
-            max-width: 100%;
-            max-height: 600px;
+            width: 400px; /* Reduced size */
+            height: 850px; /* Reduced size */
             border-radius: 10px;
             object-fit: cover;
         }
@@ -179,47 +179,13 @@
 
 <!-- Tab buttons -->
 <div class="tab">
-    <button class="tablinks active" onclick="openTab(event, 'form-survey')">Form Survey</button>
+    <button class="tablinks active" onclick="openTab(event, 'prototype')">Prototype Picture</button>
     <button class="tablinks" onclick="openTab(event, 'articles')">Articles</button>
-    <button class="tablinks" onclick="openTab(event, 'prototype')">Prototype Picture</button>
+    <button class="tablinks" onclick="openTab(event, 'form-survey')">Form Survey</button>
 </div>
 
 <!-- Tab content -->
-<div id="form-survey" class="tab-content active">
-    <h2>Form Survey</h2>
-    <p>Here will be the form survey for collecting feedback or user input.</p>
-</div>
-
-<div id="articles" class="tab-content">
-    <h2>Articles</h2>
-
-    <!-- Article 1 -->
-    <div class="article-container">
-        <img src="picture-1.jpg" alt="Article 1 Image">
-        <a href="article1.html" target="_blank">Article 1: Lessons from Investment to Life</a>
-    </div>
-
-    <!-- Article 2 -->
-    <div class="article-container">
-        <img src="picture-2.jpg" alt="Article 2 Image">
-        <a href="article2.html" target="_blank">Article 2: How Investment Fuels Personal Development</a>
-    </div>
-
-    <!-- Article 3 -->
-    <div class="article-container">
-        <img src="picture-3.jpg" alt="Article 3 Image">
-        <a href="article3.html" target="_blank">Article 3: Thriving in the Changing Landscape of Investment</a>
-    </div>
-
-    <!-- Article 4 -->
-    <div class="article-container">
-        <img src="picture-4.jpg" alt="Article 4 Image">
-        <a href="article4.html" target="_blank">Article 4: How Investment Mirrors Life Philosophy</a>
-    </div>
-</div>
-
-<!-- Prototype tab content -->
-<div id="prototype" class="tab-content">
+<div id="prototype" class="tab-content active">
     <h2>Prototype Highlights</h2>
     
     <div class="features-list">
@@ -252,6 +218,39 @@
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
+</div>
+
+<div id="articles" class="tab-content">
+    <h2>Articles</h2>
+
+    <!-- Article 1 -->
+    <div class="article-container">
+        <img src="picture-1.jpg" alt="Article 1 Image">
+        <a href="article1.html" target="_blank">Article 1: Lessons from Investment to Life</a>
+    </div>
+
+    <!-- Article 2 -->
+    <div class="article-container">
+        <img src="picture-2.jpg" alt="Article 2 Image">
+        <a href="article2.html" target="_blank">Article 2: How Investment Fuels Personal Development</a>
+    </div>
+
+    <!-- Article 3 -->
+    <div class="article-container">
+        <img src="picture-3.jpg" alt="Article 3 Image">
+        <a href="article3.html" target="_blank">Article 3: Thriving in the Changing Landscape of Investment</a>
+    </div>
+
+    <!-- Article 4 -->
+    <div class="article-container">
+        <img src="picture-4.jpg" alt="Article 4 Image">
+        <a href="article4.html" target="_blank">Article 4: How Investment Mirrors Life Philosophy</a>
+    </div>
+</div>
+
+<div id="form-survey" class="tab-content">
+    <h2>Form Survey</h2>
+    <p>Here will be the form survey for collecting feedback or user input.</p>
 </div>
 
 <footer>
