@@ -11,192 +11,23 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Add canvas-confetti library from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
+    <!-- Hide default cursor and create space for the animated cursor -->
     <style>
-        /* Global Styles */
         body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
+            cursor: none; /* Hide the default cursor */
         }
-
-        /* Header */
-        header {
-            background-color: #4a90e2;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: 600;
-        }
-        header p {
-            margin-top: 10px;
-            font-size: 1.3em;
-            font-weight: 400;
-        }
-
-        /* Tab styles */
-        .tab {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .tab button {
-            background-color: #4a90e2;
-            color: white;
-            padding: 14px 20px;
-            cursor: pointer;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 5px 5px 0 0;
-            margin-right: 2px;
-            transition: background-color 0.3s ease;
-        }
-        .tab button:hover {
-            background-color: #357ABD;
-        }
-        .tab button.active {
-            background-color: #357ABD;
-        }
-
-        /* Content container */
-        .tab-content {
-            display: none;
-            padding: 20px;
-            border-top: 2px solid #4a90e2;
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 0 0 10px 10px;
-        }
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Article Styles */
-        .article-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .article-container img {
-            width: 150px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-right: 20px;
-        }
-        .article-container a {
-            font-size: 1.2em;
-            color: #4a90e2;
-            text-decoration: none;
-        }
-        .article-container a:hover {
-            text-decoration: underline;
-        }
-
-        /* Prototype Features */
-        .features-list {
-            margin-bottom: 30px;
-        }
-        .features-list h3 {
-            color: #4a90e2;
-            margin-bottom: 10px;
-        }
-        .features-list p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-        }
-        .carousel-slide {
-            display: none;
-            text-align: center;
-        }
-        .carousel-slide img {
-            width: 400px;
-            height: 850px;
-            border-radius: 10px;
-            object-fit: cover;
-        }
-        /* Navigation buttons */
-        .prev, .next {
-            cursor: pointer;
+        .custom-cursor {
             position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            transition: 0.6s ease;
-            user-select: none;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-        }
-        .next {
-            right: 15px;
-        }
-        .prev {
-            left: 15px;
-        }
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Survey Button */
-        .survey-button {
-            display: inline-block;
-            background-color: #4a90e2;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .survey-button:hover {
-            background-color: #357ABD;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        footer p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-        footer a {
-            color: #4a90e2;
-            text-decoration: underline;
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            pointer-events: none; /* Make sure the cursor doesn’t block clicks */
+            z-index: 9999;
         }
     </style>
+
+    <!-- Add canvas-confetti library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
@@ -205,161 +36,19 @@
     <p>Brought to you by Jansen Nirwana and Daniel Alves do Quental, HBS MBA Class of 2025</p>
 </header>
 
-<!-- Background Jazz Music -->
-<audio id="background-music" loop>
-    <source src="jazz.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+<!-- Add Your Tab, Video, and Form Sections Here -->
 
-<!-- Tab buttons -->
-<div class="tab">
-    <button class="tablinks active" onclick="openTab(event, 'about')">About Us</button>
-    <button class="tablinks" onclick="openTab(event, 'prototype')">Prototype Picture</button>
-    <button class="tablinks" onclick="openTab(event, 'articles')">Articles</button>
-    <button class="tablinks" onclick="openTab(event, 'form-survey')">Form Survey</button>
-</div>
-
-<!-- About Us tab content -->
-<div id="about" class="tab-content active">
-    <h2>About Us</h2>
-    <p>Tenfold is dedicated to helping you grow your wealth. Our platform provides innovative tools, educational content, and engaging activities to guide you on your financial journey. We believe that with the right knowledge and strategy, anyone can achieve financial success. Let’s grow your wealth by tenfold!</p>
-
-    <!-- Promotional Video -->
-    <video width="768" height="1152" autoplay loop muted>
-        <source src="Financial freedom.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-
-<!-- Prototype tab content -->
-<div id="prototype" class="tab-content">
-    <h2>Prototype Highlights</h2>
-    
-    <div class="features-list">
-        <h3>1. Risk Management</h3>
-        <p>Deposit Recommendation reflects your readiness to take more risk</p>
-
-        <h3>2. Stocks Unlock</h3>
-        <p>More stocks unlocked as you learn along the way</p>
-
-        <h3>3. Risk Assessment</h3>
-        <p>Each stock has a risk rating and projected weekly gain/loss for easier judgment</p>
-
-        <h3>4. Fun Learning!</h3>
-        <p>Integrated continuous activities to engage you in your learning journey</p>
-    </div>
-
-    <!-- Carousel for prototype images -->
-    <div class="carousel-container">
-        <div class="carousel-slide">
-            <img src="proto1.png" alt="Prototype 1 Image">
-        </div>
-        <div class="carousel-slide">
-            <img src="proto2.png" alt="Prototype 2 Image">
-        </div>
-        <div class="carousel-slide">
-            <img src="proto3.png" alt="Prototype 3 Image">
-        </div>
-
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-</div>
-
-<!-- Articles tab content -->
-<div id="articles" class="tab-content">
-    <h2>Articles</h2>
-
-    <!-- Article 1 -->
-    <div class="article-container">
-        <img src="picture-1.jpg" alt="Article 1 Image">
-        <a href="article1.html" target="_blank">Article 1: Lessons from Investment to Life</a>
-    </div>
-
-    <!-- Article 2 -->
-    <div class="article-container">
-        <img src="picture-2.jpg" alt="Article 2 Image">
-        <a href="article2.html" target="_blank">Article 2: How Investment Fuels Personal Development</a>
-    </div>
-
-    <!-- Article 3 -->
-    <div class="article-container">
-        <img src="picture-3.jpg" alt="Article 3 Image">
-        <a href="article3.html" target="_blank">Article 3: Thriving in the Changing Landscape of Investment</a>
-    </div>
-
-    <!-- Article 4 -->
-    <div class="article-container">
-        <img src="picture-4.jpg" alt="Article 4 Image">
-        <a href="article4.html" target="_blank">Article 4: How Investment Mirrors Life Philosophy</a>
-    </div>
-</div>
-
-<!-- Form Survey tab content -->
-<div id="form-survey" class="tab-content">
-    <h2>Form Survey</h2>
-    <p>We'd love to hear your feedback! Please click the button below to fill out our survey.</p>
-
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4GfHAGQtVOSq2YfA5zVFcZmCK4Nhh4Abc8Xe4df-AWWf1gA/viewform" target="_blank" class="survey-button">Take the Survey</a>
-</div>
-
-<footer>
-    <p>© 2024 Tenfold. All rights reserved. | <a href="#">Privacy Policy</a></p>
-</footer>
+<!-- Add the animated cursor image (Money With Wings GIF) -->
+<img src="money-with-wings.gif" id="animated-cursor" class="custom-cursor" alt="Money With Wings GIF">
 
 <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
+    // JavaScript to move the GIF with the cursor
+    const cursor = document.getElementById('animated-cursor');
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("carousel-slide");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slides[slideIndex - 1].style.display = "block";
-    }
-
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-            tabcontent[i].classList.remove("active");
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
-        }
-        document.getElementById(tabName).style.display = "block";
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
-
-    // Show the default active tab
-    document.getElementById("about").style.display = "block";
-
-    // Trigger confetti when the page loads
-    window.onload = function() {
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
-
-        // Wait for user interaction before playing music
-        document.body.addEventListener('click', function() {
-            var audio = document.getElementById("background-music");
-            audio.play();
-        });
-    };
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+    });
 </script>
 
 </body>
