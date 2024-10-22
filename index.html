@@ -122,7 +122,7 @@
             text-align: center;
         }
         .carousel-slide img {
-            width: 400px; /* Adjust the size of the images */
+            width: 400px;
             height: 850px;
             border-radius: 10px;
             object-fit: cover;
@@ -136,17 +136,17 @@
             padding: 16px;
             color: white;
             font-weight: bold;
-            font-size: 24px; /* Larger font size for better visibility */
+            font-size: 24px;
             transition: 0.6s ease;
             user-select: none;
-            background-color: rgba(0, 0, 0, 0.6); /* Make buttons more visible */
-            border-radius: 50%; /* Rounded buttons */
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
         }
         .next {
-            right: 15px; /* Place on the far right */
+            right: 15px;
         }
         .prev {
-            left: 15px; /* Place on the far left */
+            left: 15px;
         }
         .prev:hover, .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
@@ -198,13 +198,20 @@
 
 <!-- Tab buttons -->
 <div class="tab">
-    <button class="tablinks active" onclick="openTab(event, 'prototype')">Prototype Picture</button>
+    <button class="tablinks active" onclick="openTab(event, 'about')">About Us</button>
+    <button class="tablinks" onclick="openTab(event, 'prototype')">Prototype Picture</button>
     <button class="tablinks" onclick="openTab(event, 'articles')">Articles</button>
     <button class="tablinks" onclick="openTab(event, 'form-survey')">Form Survey</button>
 </div>
 
+<!-- About Us tab content -->
+<div id="about" class="tab-content active">
+    <h2>About Us</h2>
+    <p>Tenfold is dedicated to helping you grow your wealth. Our platform provides innovative tools, educational content, and engaging activities to guide you on your financial journey. We believe that with the right knowledge and strategy, anyone can achieve financial success. Let’s grow your wealth by tenfold!</p>
+</div>
+
 <!-- Prototype tab content -->
-<div id="prototype" class="tab-content active">
+<div id="prototype" class="tab-content">
     <h2>Prototype Highlights</h2>
     
     <div class="features-list">
@@ -314,6 +321,9 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
     }
+
+    // Show the default active tab
+    document.getElementById("about").style.display = "block";
 </script>
 
 </body>
