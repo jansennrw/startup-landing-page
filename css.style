@@ -143,6 +143,23 @@ header p {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+/* Survey Button */
+.survey-button {
+    display: inline-block;
+    background-color: #4a90e2;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.survey-button:hover {
+    background-color: #357ABD;
+}
+
 /* Footer */
 footer {
     background-color: #333;
