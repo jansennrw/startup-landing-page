@@ -152,6 +152,23 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
+        /* Survey Button */
+        .survey-button {
+            display: inline-block;
+            background-color: #4a90e2;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .survey-button:hover {
+            background-color: #357ABD;
+        }
+
         /* Footer */
         footer {
             background-color: #333;
@@ -186,7 +203,7 @@
     <button class="tablinks" onclick="openTab(event, 'form-survey')">Form Survey</button>
 </div>
 
-<!-- Tab content -->
+<!-- Prototype tab content -->
 <div id="prototype" class="tab-content active">
     <h2>Prototype Highlights</h2>
     
@@ -222,6 +239,7 @@
     </div>
 </div>
 
+<!-- Articles tab content -->
 <div id="articles" class="tab-content">
     <h2>Articles</h2>
 
@@ -250,9 +268,12 @@
     </div>
 </div>
 
+<!-- Form Survey tab content -->
 <div id="form-survey" class="tab-content">
     <h2>Form Survey</h2>
-    <p>Here will be the form survey for collecting feedback or user input.</p>
+    <p>We'd love to hear your feedback! Please click the button below to fill out our survey.</p>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4GfHAGQtVOSq2YfA5zVFcZmCK4Nhh4Abc8Xe4df-AWWf1gA/viewform" target="_blank" class="survey-button">Take the Survey</a>
 </div>
 
 <footer>
