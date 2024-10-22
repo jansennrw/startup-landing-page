@@ -6,6 +6,10 @@
     <meta name="description" content="Tenfold - Let's grow your wealth by tenfold">
     <title>Tenfold - Let's Grow Your Wealth by Tenfold</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Add canvas-confetti library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
     <style>
         /* Global Styles */
         body {
@@ -324,6 +328,15 @@
 
     // Show the default active tab
     document.getElementById("about").style.display = "block";
+
+    // Trigger confetti when the page loads
+    window.onload = function() {
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    };
 </script>
 
 </body>
