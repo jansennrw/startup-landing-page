@@ -122,8 +122,8 @@
             text-align: center;
         }
         .carousel-slide img {
-            width: 400px; /* Reduced size */
-            height: 850px; /* Reduced size */
+            width: 400px; /* Adjust the size of the images */
+            height: 850px;
             border-radius: 10px;
             object-fit: cover;
         }
@@ -133,18 +133,20 @@
             position: absolute;
             top: 50%;
             width: auto;
-            margin-top: -22px;
             padding: 16px;
             color: white;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 24px; /* Larger font size for better visibility */
             transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
             user-select: none;
+            background-color: rgba(0, 0, 0, 0.6); /* Make buttons more visible */
+            border-radius: 50%; /* Rounded buttons */
         }
         .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
+            right: 15px; /* Place on the far right */
+        }
+        .prev {
+            left: 15px; /* Place on the far left */
         }
         .prev:hover, .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
