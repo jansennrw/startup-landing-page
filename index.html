@@ -403,16 +403,23 @@
         slides[slideIndex - 1].style.display = "block";
     }
 
-    // Show default active tab (About) and start snow immediately
-    document.getElementById("about").style.display = "block";
-    document.getElementById('snow-container').style.display = 'block';
-    startSnow();
+    // Trigger confetti when the page loads
+    window.onload = function() {
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
 
-    // Autoplay audio after user interaction (browser autoplay policies)
-    document.body.addEventListener('click', function() {
-        var audio = document.getElementById("background-music");
-        audio.play();
-    });
+        // Wait for user interaction before playing music
+        document.body.addEventListener('click', function() {
+            var audio = document.getElementById("background-music");
+            audio.play();
+        });
+
+        document.getElementById('snow-container').style.display = 'block';
+        startSnow();
+    };
 </script>
 
 </body>
