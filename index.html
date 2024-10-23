@@ -273,8 +273,10 @@
         }
     }
 
-    // Show default active tab (About)
+    // Show default active tab (About) and start snow immediately
     document.getElementById("about").style.display = "block";
+    document.getElementById('snow-container').style.display = 'block';
+    startSnow();
 
     // Autoplay audio after user interaction (browser autoplay policies)
     document.body.addEventListener('click', function() {
