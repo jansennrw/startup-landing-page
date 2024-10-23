@@ -11,45 +11,50 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Add canvas-confetti library from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
+    <!-- Falling GIFs Style -->
     <style>
-        /* Global Styles */
         body {
-            margin: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            background-color: #4a90e2;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        header h1 {
             margin: 0;
-            font-size: 2.5em;
-            font-weight: 600;
-        }
-        header p {
-            margin-top: 10px;
-            font-size: 1.3em;
-            font-weight: 400;
         }
 
-        /* Tab styles */
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
+            display: none;
+        }
+
+        .falling-money {
+            position: absolute;
+            width: 50px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
         .tab {
             display: flex;
             justify-content: center;
             margin-top: 20px;
         }
+
         .tab button {
             background-color: #4a90e2;
             color: white;
@@ -61,142 +66,32 @@
             margin-right: 2px;
             transition: background-color 0.3s ease;
         }
+
         .tab button:hover {
             background-color: #357ABD;
         }
+
         .tab button.active {
             background-color: #357ABD;
         }
 
-        /* Content container */
         .tab-content {
             display: none;
             padding: 20px;
             border-top: 2px solid #4a90e2;
             background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 800px;
             margin: 0 auto;
             border-radius: 0 0 10px 10px;
         }
+
         .tab-content.active {
             display: block;
         }
-
-        /* Article Styles */
-        .article-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .article-container img {
-            width: 150px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-right: 20px;
-        }
-        .article-container a {
-            font-size: 1.2em;
-            color: #4a90e2;
-            text-decoration: none;
-        }
-        .article-container a:hover {
-            text-decoration: underline;
-        }
-
-        /* Prototype Features */
-        .features-list {
-            margin-bottom: 30px;
-        }
-        .features-list h3 {
-            color: #4a90e2;
-            margin-bottom: 10px;
-        }
-        .features-list p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-        }
-        .carousel-slide {
-            display: none;
-            text-align: center;
-        }
-        .carousel-slide img {
-            width: 400px;
-            height: 850px;
-            border-radius: 10px;
-            object-fit: cover;
-        }
-        /* Navigation buttons */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            transition: 0.6s ease;
-            user-select: none;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-        }
-        .next {
-            right: 15px;
-        }
-        .prev {
-            left: 15px;
-        }
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Survey Button */
-        .survey-button {
-            display: inline-block;
-            background-color: #4a90e2;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .survey-button:hover {
-            background-color: #357ABD;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        footer p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-        footer a {
-            color: #4a90e2;
-            text-decoration: underline;
-        }
     </style>
+
+    <!-- Add canvas-confetti library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
@@ -204,12 +99,6 @@
     <h1>Tenfold - Let's Grow Your Wealth by Tenfold</h1>
     <p>Brought to you by Jansen Nirwana and Daniel Alves do Quental, HBS MBA Class of 2025</p>
 </header>
-
-<!-- Background Jazz Music -->
-<audio id="background-music" loop>
-    <source src="jazz.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
 
 <!-- Tab buttons -->
 <div class="tab">
@@ -234,7 +123,6 @@
 <!-- Prototype tab content -->
 <div id="prototype" class="tab-content">
     <h2>Prototype Highlights</h2>
-    
     <div class="features-list">
         <h3>1. Risk Management</h3>
         <p>Deposit Recommendation reflects your readiness to take more risk</p>
@@ -300,7 +188,6 @@
 <div id="form-survey" class="tab-content">
     <h2>Form Survey</h2>
     <p>We'd love to hear your feedback! Please click the button below to fill out our survey.</p>
-
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4GfHAGQtVOSq2YfA5zVFcZmCK4Nhh4Abc8Xe4df-AWWf1gA/viewform" target="_blank" class="survey-button">Take the Survey</a>
 </div>
 
@@ -308,23 +195,33 @@
     <p>© 2024 Tenfold. All rights reserved. | <a href="#">Privacy Policy</a></p>
 </footer>
 
-<script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
+<!-- Snow (falling money-with-wings) container -->
+<div class="snow-container" id="snow-container"></div>
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
+<script>
+    // JavaScript to handle the snow effect in About tab
+    function createFallingMoney() {
+        const snowContainer = document.getElementById('snow-container');
+        const money = document.createElement('img');
+        money.src = 'money-with-wings.gif'; // Path to your gif file
+        money.classList.add('falling-money');
+        money.style.left = Math.random() * 100 + 'vw';
+        money.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random fall speed
+        snowContainer.appendChild(money);
+
+        // Remove the money after it falls
+        setTimeout(() => {
+            money.remove();
+        }, 5000); // Adjust timing as needed
     }
 
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("carousel-slide");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slides[slideIndex - 1].style.display = "block";
+    function startSnow() {
+        setInterval(createFallingMoney, 300); // Create new falling money every 300ms
+    }
+
+    function stopSnow() {
+        const snowContainer = document.getElementById('snow-container');
+        snowContainer.innerHTML = ''; // Clear all falling money
     }
 
     function openTab(evt, tabName) {
@@ -341,25 +238,19 @@
         document.getElementById(tabName).style.display = "block";
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
+
+        // Start or stop snow based on tab
+        if (tabName === 'about') {
+            document.getElementById('snow-container').style.display = 'block';
+            startSnow();
+        } else {
+            document.getElementById('snow-container').style.display = 'none';
+            stopSnow();
+        }
     }
 
-    // Show the default active tab
+    // Show default active tab (About)
     document.getElementById("about").style.display = "block";
-
-    // Trigger confetti when the page loads
-    window.onload = function() {
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
-
-        // Wait for user interaction before playing music
-        document.body.addEventListener('click', function() {
-            var audio = document.getElementById("background-music");
-            audio.play();
-        });
-    };
 </script>
 
 </body>
