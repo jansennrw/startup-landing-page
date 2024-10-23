@@ -102,8 +102,12 @@
 
         /* Keyframe Animation for Falling GIF */
         @keyframes fall {
-            0% { top: -50px; }
-            100% { top: 100vh; }
+            0% {
+                top: -50px; /* Start just above the viewport */
+            }
+            100% {
+                top: 100vh; /* End at the bottom of the viewport */
+            }
         }
 
         /* Prototype Features */
@@ -341,13 +345,13 @@
         money.src = 'money-with-wings.gif'; // Path to your gif file
         money.classList.add('falling-money');
         money.style.left = Math.random() * 100 + 'vw';
-        money.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random fall speed
+        money.style.animationDuration = Math.random() * 3 + 5 + 's'; // Adjusted fall speed to be slower
         snowContainer.appendChild(money);
 
-        // Remove the money after it falls
+        // Remove the money after it falls completely down
         setTimeout(() => {
             money.remove();
-        }, 5000); // Adjust timing as needed
+        }, 8000); // Ensuring it completes falling before removal
     }
 
     function startSnow() {
