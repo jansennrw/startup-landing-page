@@ -83,99 +83,27 @@
             display: block;
         }
 
-        /* Article Styles */
-        .article-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .article-container img {
-            width: 150px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-right: 20px;
-        }
-        .article-container a {
-            font-size: 1.2em;
-            color: #4a90e2;
-            text-decoration: none;
-        }
-        .article-container a:hover {
-            text-decoration: underline;
+        /* Snow (falling money) container */
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
         }
 
-        /* Prototype Features */
-        .features-list {
-            margin-bottom: 30px;
-        }
-        .features-list h3 {
-            color: #4a90e2;
-            margin-bottom: 10px;
-        }
-        .features-list p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-        }
-        .carousel-slide {
-            display: none;
-            text-align: center;
-        }
-        .carousel-slide img {
-            width: 400px;
-            height: 850px;
-            border-radius: 10px;
-            object-fit: cover;
-        }
-        /* Navigation buttons */
-        .prev, .next {
-            cursor: pointer;
+        .falling-money {
             position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            transition: 0.6s ease;
-            user-select: none;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-        }
-        .next {
-            right: 15px;
-        }
-        .prev {
-            left: 15px;
-        }
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+            width: 50px;
+            animation: fall linear infinite;
         }
 
-        /* Survey Button */
-        .survey-button {
-            display: inline-block;
-            background-color: #4a90e2;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .survey-button:hover {
-            background-color: #357ABD;
+        /* Keyframe Animation for Falling GIF */
+        @keyframes fall {
+            0% { top: -50px; }
+            100% { top: 100vh; }
         }
 
         /* Footer */
@@ -195,12 +123,6 @@
         footer a {
             color: #4a90e2;
             text-decoration: underline;
-        }
-
-        /* Keyframe Animation for Falling GIF */
-        @keyframes fall {
-            0% { top: -50px; }
-            100% { top: 100vh; }
         }
     </style>
 </head>
@@ -225,6 +147,9 @@
     <button class="tablinks" onclick="openTab(event, 'form-survey')">Form Survey</button>
 </div>
 
+<!-- Snow (falling money-with-wings) container -->
+<div class="snow-container" id="snow-container"></div>
+
 <!-- About Us tab content -->
 <div id="about" class="tab-content active">
     <h2>About Us</h2>
@@ -235,11 +160,6 @@
         <source src="Financial freedom.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-
-    <!-- Falling Money GIF Animation -->
-    <div id="money-container" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; display:none;">
-        <img id="falling-money" src="money-with-wings.gif" alt="Money with Wings" style="position:absolute; width:50px; animation: fall 5s infinite linear;">
-    </div>
 </div>
 
 <!-- Prototype tab content -->
@@ -259,60 +179,6 @@
         <h3>4. Fun Learning!</h3>
         <p>Integrated continuous activities to engage you in your learning journey</p>
     </div>
-
-    <!-- Carousel for prototype images -->
-    <div class="carousel-container">
-        <div class="carousel-slide">
-            <img src="proto1.png" alt="Prototype 1 Image">
-        </div>
-        <div class="carousel-slide">
-            <img src="proto2.png" alt="Prototype 2 Image">
-        </div>
-        <div class="carousel-slide">
-            <img src="proto3.png" alt="Prototype 3 Image">
-        </div>
-
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-</div>
-
-<!-- Articles tab content -->
-<div id="articles" class="tab-content">
-    <h2>Articles</h2>
-
-    <!-- Article 1 -->
-    <div class="article-container">
-        <img src="picture-1.jpg" alt="Article 1 Image">
-        <a href="article1.html" target="_blank">Article 1: Lessons from Investment to Life</a>
-    </div>
-
-    <!-- Article 2 -->
-    <div class="article-container">
-        <img src="picture-2.jpg" alt="Article 2 Image">
-        <a href="article2.html" target="_blank">Article 2: How Investment Fuels Personal Development</a>
-    </div>
-
-    <!-- Article 3 -->
-    <div class="article-container">
-        <img src="picture-3.jpg" alt="Article 3 Image">
-        <a href="article3.html" target="_blank">Article 3: Thriving in the Changing Landscape of Investment</a>
-    </div>
-
-    <!-- Article 4 -->
-    <div class="article-container">
-        <img src="picture-4.jpg" alt="Article 4 Image">
-        <a href="article4.html" target="_blank">Article 4: How Investment Mirrors Life Philosophy</a>
-    </div>
-</div>
-
-<!-- Form Survey tab content -->
-<div id="form-survey" class="tab-content">
-    <h2>Form Survey</h2>
-    <p>We'd love to hear your feedback! Please click the button below to fill out our survey.</p>
-
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4GfHAGQtVOSq2YfA5zVFcZmCK4Nhh4Abc8Xe4df-AWWf1gA/viewform" target="_blank" class="survey-button">Take the Survey</a>
 </div>
 
 <footer>
@@ -320,22 +186,29 @@
 </footer>
 
 <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
+    // Falling money-with-wings.gif effect in About tab
+    function createFallingMoney() {
+        const snowContainer = document.getElementById('snow-container');
+        const money = document.createElement('img');
+        money.src = 'money-with-wings.gif'; // Path to your gif file
+        money.classList.add('falling-money');
+        money.style.left = Math.random() * 100 + 'vw';
+        money.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random fall speed
+        snowContainer.appendChild(money);
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
+        // Remove the money after it falls
+        setTimeout(() => {
+            money.remove();
+        }, 5000); // Adjust timing as needed
     }
 
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("carousel-slide");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slides[slideIndex - 1].style.display = "block";
+    function startSnow() {
+        setInterval(createFallingMoney, 300); // Create new falling money every 300ms
+    }
+
+    function stopSnow() {
+        const snowContainer = document.getElementById('snow-container');
+        snowContainer.innerHTML = ''; // Clear all falling money
     }
 
     function openTab(evt, tabName) {
@@ -353,52 +226,26 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
 
-        // Show money gif on 'About Us' tab
+        // Start or stop snow based on tab
         if (tabName === 'about') {
-            document.getElementById("money-container").style.display = "block";
-            startFallingMoney();
+            document.getElementById('snow-container').style.display = 'block';
+            startSnow();
         } else {
-            document.getElementById("money-container").style.display = "none";
+            document.getElementById('snow-container').style.display = 'none';
+            stopSnow();
         }
     }
 
-    // Falling animation logic
-    function startFallingMoney() {
-        let fallingMoney = document.getElementById("falling-money");
-        let moneyContainer = document.getElementById("money-container");
-        moneyContainer.style.display = "block";
-        let moveMoney = setInterval(function() {
-            fallingMoney.style.left = Math.random() * window.innerWidth + "px";
-            fallingMoney.style.top = Math.random() * window.innerHeight + "px";
-        }, 1000);
-    }
-
-    // Keyframe for animation
-    let styleSheet = document.styleSheets[0];
-    styleSheet.insertRule(`
-        @keyframes fall {
-            0% { top: -50px; }
-            100% { top: 100vh; }
-        }
-    `, styleSheet.cssRules.length);
-
-    // Show the default active tab
+    // Show default active tab (About) and start snow immediately
     document.getElementById("about").style.display = "block";
+    document.getElementById('snow-container').style.display = 'block';
+    startSnow();
 
-    // Trigger confetti when the page loads
-    window.onload = function() {
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
-
-        // Wait for user interaction before playing music
-        document.body.addEventListener('click', function() {
-            var audio = document.getElementById("background-music");
-            audio.play();
-        });
-    };
+    // Autoplay audio after user interaction (browser autoplay policies)
+    document.body.addEventListener('click', function() {
+        var audio = document.getElementById("background-music");
+        audio.play();
+    });
 </script>
 
 </body>
