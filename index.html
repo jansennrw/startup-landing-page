@@ -345,22 +345,30 @@
         money.src = 'money-with-wings.gif'; // Path to your gif file
         money.classList.add('falling-money');
         money.style.left = Math.random() * 100 + 'vw';
-        money.style.animationDuration = Math.random() * 3 + 5 + 's'; // Adjusted fall speed to be slower
+        money.style.animationDuration = Math.random() * 5 + 10 + 's'; // Longer duration for smoother fall
         snowContainer.appendChild(money);
 
         // Remove the money after it falls completely down
         setTimeout(() => {
             money.remove();
-        }, 8000); // Ensuring it completes falling before removal
+        }, 15000); // Ensuring it completes falling before removal
     }
 
     function startSnow() {
-        setInterval(createFallingMoney, 300); // Create new falling money every 300ms
+        setInterval(createFallingMoney, 1000); // Reduce number of falling money
     }
 
     function stopSnow() {
         const snowContainer = document.getElementById('snow-container');
         snowContainer.innerHTML = ''; // Clear all falling money
+    }
+
+    function triggerConfetti() {
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
     }
 
     function openTab(evt, tabName) {
@@ -378,10 +386,11 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
 
-        // Start or stop snow based on tab
+        // Start or stop snow and confetti based on tab
         if (tabName === 'about') {
             document.getElementById('snow-container').style.display = 'block';
             startSnow();
+            triggerConfetti(); // Trigger confetti when About Us is clicked
         } else {
             document.getElementById('snow-container').style.display = 'none';
             stopSnow();
@@ -409,11 +418,7 @@
 
     // Trigger confetti when the page loads
     window.onload = function() {
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
+        triggerConfetti(); // Confetti on initial page load
 
         // Wait for user interaction before playing music
         document.body.addEventListener('click', function() {
