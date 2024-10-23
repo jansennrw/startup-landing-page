@@ -12,7 +12,7 @@
     
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="style.css">
-
+    
     <!-- Add canvas-confetti library from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
@@ -124,71 +124,18 @@
     <p>© 2024 Tenfold. All rights reserved. | <a href="#">Privacy Policy</a></p>
 </footer>
 
-<!-- Snow (falling money-with-wings) container -->
-<div class="snow-container" id="snow-container"></div>
-
 <script>
-    // Falling money-with-wings.gif effect in About tab
-    function createFallingMoney() {
-        const snowContainer = document.getElementById('snow-container');
-        const money = document.createElement('img');
-        money.src = 'money-with-wings.gif'; // Path to your gif file
-        money.classList.add('falling-money');
-        money.style.left = Math.random() * 100 + 'vw';
-        money.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random fall speed
-        snowContainer.appendChild(money);
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-        // Remove the money after it falls
-        setTimeout(() => {
-            money.remove();
-        }, 5000); // Adjust timing as needed
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
     }
 
-    function startSnow() {
-        setInterval(createFallingMoney, 300); // Create new falling money every 300ms
-    }
-
-    function stopSnow() {
-        const snowContainer = document.getElementById('snow-container');
-        snowContainer.innerHTML = ''; // Clear all falling money
-    }
-
-    function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-            tabcontent[i].classList.remove("active");
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
-        }
-        document.getElementById(tabName).style.display = "block";
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-
-        // Start or stop snow based on tab
-        if (tabName === 'about') {
-            document.getElementById('snow-container').style.display = 'block';
-            startSnow();
-        } else {
-            document.getElementById('snow-container').style.display = 'none';
-            stopSnow();
-        }
-    }
-
-    // Show default active tab (About) and start snow immediately
-    document.getElementById("about").style.display = "block";
-    document.getElementById('snow-container').style.display = 'block';
-    startSnow();
-
-    // Autoplay audio after user interaction (browser autoplay policies)
-    document.body.addEventListener('click', function() {
-        var audio = document.getElementById("background-music");
-        audio.play();
-    });
-</script>
-
-</body>
-</html>
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("carousel-slide");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style
