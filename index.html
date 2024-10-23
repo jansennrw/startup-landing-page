@@ -12,7 +12,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Falling GIFs Style -->
+    <!-- Falling GIFs and styling -->
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -47,6 +47,24 @@
             to {
                 transform: translateY(100vh);
             }
+        }
+
+        /* Header and Tab Styling */
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 1.2em;
         }
 
         .tab {
@@ -99,6 +117,12 @@
     <h1>Tenfold - Let's Grow Your Wealth by Tenfold</h1>
     <p>Brought to you by Jansen Nirwana and Daniel Alves do Quental, HBS MBA Class of 2025</p>
 </header>
+
+<!-- Background Jazz Music -->
+<audio id="background-music" loop>
+    <source src="jazz.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 
 <!-- Tab buttons -->
 <div class="tab">
@@ -199,7 +223,7 @@
 <div class="snow-container" id="snow-container"></div>
 
 <script>
-    // JavaScript to handle the snow effect in About tab
+    // Falling money-with-wings.gif effect in About tab
     function createFallingMoney() {
         const snowContainer = document.getElementById('snow-container');
         const money = document.createElement('img');
@@ -251,6 +275,12 @@
 
     // Show default active tab (About)
     document.getElementById("about").style.display = "block";
+
+    // Autoplay audio after user interaction (browser autoplay policies)
+    document.body.addEventListener('click', function() {
+        var audio = document.getElementById("background-music");
+        audio.play();
+    });
 </script>
 
 </body>
